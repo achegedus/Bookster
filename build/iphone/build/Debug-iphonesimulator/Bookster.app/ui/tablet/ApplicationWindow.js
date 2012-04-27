@@ -1,0 +1,1 @@
+/Users/adamh/Documents/Titanium Studio Workspace/Bookster/Resources/ui/tablet/ApplicationWindow.js

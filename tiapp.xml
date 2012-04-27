@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ti:app xmlns:ti="http://ti.appcelerator.org">
+    <property name="acs-oauth-secret-development" type="string">iG4L8a6ukKP7W1I7Ffc4qHGUfGGSBb1v</property>
+    <property name="acs-oauth-key-development" type="string">7U0DGfMUgkGyqxIlMPDOeP0HM3RxIM59</property>
+    <property name="acs-api-key-development" type="string">XemXxKOgukg85SMKnAconu7bMWhNCEjV</property>
+    <property name="acs-oauth-secret-production" type="string">WV137sfms1qucTHFqJmwRrzVjVjr05EH</property>
+    <property name="acs-oauth-key-production" type="string">Rjw7U6gtVpln479Gd6qkLupWLsR72ksz</property>
+    <property name="acs-api-key-production" type="string">1KsIcqYu23zJmszWk5kms5vxQRJE89FM</property>
+    <deployment-targets>
+        <target device="mobileweb">true</target>
+        <target device="iphone">true</target>
+        <target device="ipad">true</target>
+        <target device="android">true</target>
+        <target device="blackberry">false</target>
+    </deployment-targets>
+    <sdk-version>2.0.1.GA2</sdk-version>
+    <id>com.adamhegedus.bookster</id>
+    <name>Bookster</name>
+    <version>1.0</version>
+    <publisher>Adam C. Hegedus</publisher>
+    <url>http://www.adamhegedus.com</url>
+    <description>not specified</description>
+    <copyright>2012 by Adam C. Hegedus</copyright>
+    <icon>appicon.png</icon>
+    <persistent-wifi>false</persistent-wifi>
+    <prerendered-icon>false</prerendered-icon>
+    <statusbar-style>default</statusbar-style>
+    <statusbar-hidden>false</statusbar-hidden>
+    <fullscreen>false</fullscreen>
+    <navbar-hidden>false</navbar-hidden>
+    <analytics>true</analytics>
+    <guid>c60e1718-f779-453e-95f1-4fe7b7342fc5</guid>
+    <property name="ti.ui.defaultunit">system</property>
+    <iphone>
+        <orientations device="iphone">
+            <orientation>Ti.UI.PORTRAIT</orientation>
+        </orientations>
+        <orientations device="ipad">
+            <orientation>Ti.UI.PORTRAIT</orientation>
+            <orientation>Ti.UI.UPSIDE_PORTRAIT</orientation>
+            <orientation>Ti.UI.LANDSCAPE_LEFT</orientation>
+            <orientation>Ti.UI.LANDSCAPE_RIGHT</orientation>
+        </orientations>
+    </iphone>
+    <android xmlns:android="http://schemas.android.com/apk/res/android"/>
+    <mobileweb>
+        <precache/>
+        <splash>
+            <enabled>true</enabled>
+            <inline-css-images>true</inline-css-images>
+        </splash>
+        <theme>default</theme>
+    </mobileweb>
+    <modules>
+        <module platform="commonjs" version="2.0.1">ti.cloud</module>
+    </modules>
+</ti:app>
