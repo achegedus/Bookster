@@ -1,1 +1,0 @@
-/Users/adamh/Documents/Titanium Studio Workspace/Bookster/Resources/ui/common/FirstView.js
