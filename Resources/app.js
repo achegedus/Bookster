@@ -35,6 +35,7 @@ if (Ti.version < 1.8 ) {
 	Cloud.Users.showMe(function (e) {
 	    if (e.success) {
 	    	// User is already logged in
+	    	Ti.App.Properties.setString('userID',e.users[0]['id']);
 	    	
 	    	// Show app window
 	    	

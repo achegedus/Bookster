@@ -6,6 +6,31 @@ function FirstView() {
 	Cloud.debug = true;
 	
 	
+	
+	Cloud.Objects.query({
+	    classname: 'books',
+	    page: 1,
+	    per_page: 10,
+	    where: {
+        	user_id: Ti.App.Properties.getString('userID')
+		}
+	}, function (e) {
+	    if (e.success) {
+	        alert('Success:\\n' +
+	            'Count: ' + e.books.length);
+	        for (var i = 0; i < e.books.length; i++) {
+	            var book = e.books[i];
+	            alert('id: ' + book.id + '\\n' +
+	                'make: ' + book.title + '\\n' +
+	                'created_at: ' + book.created_at);
+	        }
+	    } else {
+	        alert('Error:\\n' +
+	            ((e.error && e.message) || JSON.stringify(e)));
+	    }
+	});
+	
+	
 
 	//label using localization-ready strings from <app dir>/i18n/en/strings.xml\
 	var Book = Ti.UI.createButton({

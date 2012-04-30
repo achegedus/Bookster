@@ -70,7 +70,7 @@ function LoginView() {
 		            // 'id: ' + user.id + '\\n' +
 		            // 'first name: ' + user.first_name + '\\n' +
 		            // 'last name: ' + user.last_name);
-		            
+				Ti.App.Properties.setString('userID',e.users[0]['id']);
 				Ti.App.fireEvent('showApp');  
 		    } else {
 		        alert('Error:\\n' +
