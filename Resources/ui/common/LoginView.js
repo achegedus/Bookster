@@ -6,6 +6,50 @@ function LoginView() {
 	Cloud.debug = true;
 	
 	
+	// User Name
+	var userNameField = Ti.UI.createTextField({
+		height : 35,
+		top : 10,
+		left : 40,
+		width : 240,
+		hintText : 'Username',
+		keyboardType : Ti.UI.KEYBOARD_DEFAULT,
+		returnKeyType : Ti.UI.RETURNKEY_DEFAULT,
+		borderStyle : Ti.UI.INPUT_BORDERSTYLE_ROUNDED
+	});
+
+	// Listen for return events.
+	userNameField.addEventListener('return', function(e) {
+		userNameField.blur();
+		alert('Input was: ' + userNameField.value);
+	});
+
+	// Add to the parent view.
+	self.add(userNameField);
+
+
+	// Password
+	var passwordField = Ti.UI.createTextField({
+		height : 35,
+		top : 50,
+		left : 40,
+		width : 240,
+		hintText : 'password',
+		keyboardType : Ti.UI.KEYBOARD_DEFAULT,
+		returnKeyType : Ti.UI.RETURNKEY_DEFAULT,
+		borderStyle : Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
+		passwordMask: true
+	});
+
+	// Listen for return events.
+	passwordField.addEventListener('return', function(e) {
+		passwordField.blur();
+		alert('Input was: ' + passwordField.value);
+	});
+
+	// Add to the parent view.
+	self.add(passwordField);
+	
 	
 	//label using localization-ready strings from <app dir>/i18n/en/strings.xml\
 	var Login = Ti.UI.createButton({
@@ -17,8 +61,8 @@ function LoginView() {
 	
 	Login.addEventListener('click', function(e) {
 		Cloud.Users.login({
-		    login: 'adam@heged.us',
-		    password: 'carrieu'
+			username: userNameField.value,
+			password: passwordField.value,
 		}, function (e) {
 		    if (e.success) {
 		        var user = e.users[0];

@@ -16,6 +16,10 @@ if (Ti.version < 1.8 ) {
 
 // This is a single context application with mutliple windows in a stack
 (function() {
+	var Cloud = require('ti.cloud');
+	Cloud.debug = true;
+	
+	
 	//determine platform and form factor and render approproate components
 	var osname = Ti.Platform.osname,
 		version = Ti.Platform.version,
@@ -27,18 +31,67 @@ if (Ti.version < 1.8 ) {
 	var isTablet = osname === 'ipad' || (osname === 'android' && (width > 899 || height > 899));
 	
 	var Window;
-	if (isTablet) {
-		Window = require('ui/tablet/ApplicationWindow');
-	}
-	else {
-		// Android uses platform-specific properties to create windows.
-		// All other platforms follow a similar UI pattern.
-		if (osname === 'android') {
-			Window = require('ui/handheld/android/ApplicationWindow');
-		}
-		else {
-			Window = require('ui/handheld/ApplicationWindow');
-		}
-	}
-	new Window().open();
+	
+	Cloud.Users.showMe(function (e) {
+	    if (e.success) {
+	    	// User is already logged in
+	    	
+	    	// Show app window
+	    	
+	        if (isTablet) {
+				Window = require('ui/tablet/ApplicationWindow');
+			}
+			else {
+				// Android uses platform-specific properties to create windows.
+				// All other platforms follow a similar UI pattern.
+				if (osname === 'android') {
+					Window = require('ui/handheld/android/ApplicationWindow');
+				}
+				else {
+					Window = require('ui/handheld/ApplicationWindow');
+				}
+			}
+			new Window().open();
+	    } else {
+	    	// User is not logged in
+	    	
+	    	// Show login window
+	    	
+	        if (isTablet) {
+				Window = require('ui/tablet/LoginWindow');
+			}
+			else {
+				// Android uses platform-specific properties to create windows.
+				// All other platforms follow a similar UI pattern.
+				if (osname === 'android') {
+					Window = require('ui/handheld/android/LoginWindow');
+				}
+				else {
+					Window = require('ui/handheld/LoginWindow');
+				}
+			}
+			new Window().open();
+	    }
+	});
+	
+	
+	// Ti.App.addEventListener('logoutCalled', function(event)  
+	// {  
+	    // Window.close();
+	    // if (isTablet) {
+			// Window = require('ui/tablet/LoginWindow');
+		// }
+		// else {
+			// // Android uses platform-specific properties to create windows.
+			// // All other platforms follow a similar UI pattern.
+			// if (osname === 'android') {
+				// Window = require('ui/handheld/android/LoginWindow');
+			// }
+			// else {
+				// Window = require('ui/handheld/LoginWindow');
+			// }
+		// }
+		// new Window().open();
+	// });  
+// 	
 })();

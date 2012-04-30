@@ -7,30 +7,6 @@ function FirstView() {
 	
 	
 
-	// Listen for click events.
-	Create.addEventListener('click', function() {
-		//burr
-		Cloud.Users.create ({
-			username: userNameField.value,
-			password: passwordField.value,
-			password_confirmation : passwordConfirmation.value,
-			first_name: firstName.value,
-			last_name: lastName.value,
-			email: emailAddress.value
-		}, function (e) {
-			if (e.success) {
-				alert('Success');
-			} else {
-				alert('Fail');
-			}
-		});
-	});
-
-	// Add to the parent view.
-	self.add(Create);
-	
-	
-	
 	//label using localization-ready strings from <app dir>/i18n/en/strings.xml\
 	var Book = Ti.UI.createButton({
 		title : 'Create Book',
@@ -115,6 +91,8 @@ function FirstView() {
 		Cloud.Users.logout(function (e) {
 		    if (e.success) {
 		        alert('Success: Logged out');
+		        
+		        Ti.App.fireEvent('logoutCalled');  
 		    } else {
 		        alert('Error:\\n' +
 		            ((e.error && e.message) || JSON.stringify(e)));
