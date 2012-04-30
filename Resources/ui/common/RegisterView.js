@@ -4,6 +4,7 @@ function RegisterView() {
 	var Cloud = require('ti.cloud');
 	Cloud.debug = true;
 
+
 	// User Name
 	var userNameField = Ti.UI.createTextField({
 		height : 35,
@@ -24,6 +25,7 @@ function RegisterView() {
 
 	// Add to the parent view.
 	self.add(userNameField);
+
 
 
 	// Password
@@ -47,6 +49,7 @@ function RegisterView() {
 
 	// Add to the parent view.
 	self.add(passwordField);
+
 
 
 	// Create a TextField.
@@ -95,6 +98,7 @@ function RegisterView() {
 	self.add(firstName);
 
 
+
 	// Create a TextField.
 	var lastName = Ti.UI.createTextField({
 		height : 35,
@@ -115,6 +119,7 @@ function RegisterView() {
 
 	// Add to the parent view.
 	self.add(lastName);
+
 
 
 	// Create a TextField.
@@ -138,6 +143,8 @@ function RegisterView() {
 	// Add to the parent view.
 	self.add(emailAddress);
 
+
+
 	// Create a Button.
 	var Create = Ti.UI.createButton({
 		title : 'Create',
@@ -145,7 +152,6 @@ function RegisterView() {
 		width : 100,
 		top : 250,
 	});
-	
 	
 	// Listen for click events.
 	Create.addEventListener('click', function() {
@@ -169,6 +175,26 @@ function RegisterView() {
 	// Add to the parent view.
 	self.add(Create);
 	
+	
+	
+	// Create a Button.
+	var Login = Ti.UI.createButton({
+		title : 'Login',
+		height : 35,
+		width : 100,
+		top : 290,
+	});
+	
+	// Listen for click events.
+	Login.addEventListener('click', function() {
+		Ti.App.fireEvent('showLogin');
+	});
+
+	// Add to the parent view.
+	self.add(Login);
+	
+	
+	return self;
 }
 
 module.exports = RegisterView;

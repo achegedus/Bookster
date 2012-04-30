@@ -51,25 +51,27 @@ function LoginView() {
 	self.add(passwordField);
 	
 	
-	//label using localization-ready strings from <app dir>/i18n/en/strings.xml\
+	//label using localization-ready strings from <app dir>/i18n/en/strings.xml
 	var Login = Ti.UI.createButton({
 		title : 'Login',
 		height : 35,
 		width : 100,
-		top : 410,
+		top : 100,
 	});
 	
 	Login.addEventListener('click', function(e) {
 		Cloud.Users.login({
-			username: userNameField.value,
+			login: userNameField.value,
 			password: passwordField.value,
 		}, function (e) {
 		    if (e.success) {
 		        var user = e.users[0];
-		        alert('Success:\\n' +
-		            'id: ' + user.id + '\\n' +
-		            'first name: ' + user.first_name + '\\n' +
-		            'last name: ' + user.last_name);
+		        // alert('Success:\\n' +
+		            // 'id: ' + user.id + '\\n' +
+		            // 'first name: ' + user.first_name + '\\n' +
+		            // 'last name: ' + user.last_name);
+		            
+				Ti.App.fireEvent('showApp');  
 		    } else {
 		        alert('Error:\\n' +
 		            ((e.error && e.message) || JSON.stringify(e)));
@@ -78,6 +80,21 @@ function LoginView() {
 	});
 	
 	self.add(Login);
+	
+	
+	//label using localization-ready strings from <app dir>/i18n/en/strings.xml
+	var Register = Ti.UI.createButton({
+		title : 'Register',
+		height : 35,
+		width : 100,
+		top : 140,
+	});
+	
+	Register.addEventListener('click', function(e) {
+		Ti.App.fireEvent('showRegister');
+	});
+	
+	self.add(Register);
 	
 	return self;
 }

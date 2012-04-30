@@ -92,7 +92,7 @@ function FirstView() {
 		    if (e.success) {
 		        alert('Success: Logged out');
 		        
-		        Ti.App.fireEvent('logoutCalled');  
+		        Ti.App.fireEvent('showLogin');  
 		    } else {
 		        alert('Error:\\n' +
 		            ((e.error && e.message) || JSON.stringify(e)));
