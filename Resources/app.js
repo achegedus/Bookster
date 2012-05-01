@@ -20,6 +20,8 @@ if (Ti.version < 1.8 ) {
 	Cloud.debug = true;
 	
 	
+	
+	
 	//determine platform and form factor and render approproate components
 	var osname = Ti.Platform.osname,
 		version = Ti.Platform.version,
@@ -39,39 +41,12 @@ if (Ti.version < 1.8 ) {
 	    	
 	    	// Show app window
 	    	
-	        if (isTablet) {
-				Window = require('ui/tablet/ApplicationWindow');
-			}
-			else {
-				// Android uses platform-specific properties to create windows.
-				// All other platforms follow a similar UI pattern.
-				if (osname === 'android') {
-					Window = require('ui/handheld/android/ApplicationWindow');
-				}
-				else {
-					Window = require('ui/handheld/ApplicationWindow');
-				}
-			}
-			new Window().open();
+	    	openAppWindow();
 	    } else {
 	    	// User is not logged in
 	    	
 	    	// Show login window
-	    	
-	        if (isTablet) {
-				Window = require('ui/tablet/LoginWindow');
-			}
-			else {
-				// Android uses platform-specific properties to create windows.
-				// All other platforms follow a similar UI pattern.
-				if (osname === 'android') {
-					Window = require('ui/handheld/android/LoginWindow');
-				}
-				else {
-					Window = require('ui/handheld/LoginWindow');
-				}
-			}
-			new Window().open();
+	        self.openLoginWindow();
 	    }
 	});
 	
@@ -79,49 +54,47 @@ if (Ti.version < 1.8 ) {
 	Ti.App.addEventListener('showLogin', function(event)  
 	{  
 		Window().close();
-		
-		if (isTablet) {
-			Window = require('ui/tablet/LoginWindow');
-		}
-		else {
-			// Android uses platform-specific properties to create windows.
-			// All other platforms follow a similar UI pattern.
-			if (osname === 'android') {
-				Window = require('ui/handheld/android/LoginWindow');
-			}
-			else {
-				Window = require('ui/handheld/LoginWindow');
-			}
-		}
-		new Window().open();
+		self.openLoginWindow();
 	});  
 
 	
 	Ti.App.addEventListener('showApp', function(event)  
 	{  
 		Window().close();
-		
-		if (isTablet) {
-			Window = require('ui/tablet/ApplicationWindow');
-		}
-		else {
-			// Android uses platform-specific properties to create windows.
-			// All other platforms follow a similar UI pattern.
-			if (osname === 'android') {
-				Window = require('ui/handheld/android/ApplicationWindow');
-			}
-			else {
-				Window = require('ui/handheld/ApplicationWindow');
-			}
-		}
-		new Window().open();
+		self.openAppWindow();
 	}); 
 	
 	
 	Ti.App.addEventListener('showRegister', function(event)  
 	{  
 		Window().close();
+		self.openRegisterWindow();
+	}); 
+	
+	
+	var openAppWindow = function() {
 		
+		// if (isTablet) {
+			// Window = require('ui/tablet/ApplicationWindow');
+		// }
+		// else {
+			// // Android uses platform-specific properties to create windows.
+			// // All other platforms follow a similar UI pattern.
+			// if (osname === 'android') {
+				// Window = require('ui/handheld/android/ApplicationWindow');
+			// }
+			// else {
+				// Window = require('ui/handheld/ApplicationWindow');
+			// }
+		// }
+		
+		// Create a tab group to hold our windows.
+		var tab_group = require('ui/handheld/common/ApplicationTabGroup');
+		new tab_group().open();
+	}
+	
+	
+	function openRegisterWindow() {
 		if (isTablet) {
 			Window = require('ui/tablet/RegisterWindow');
 		}
@@ -136,6 +109,25 @@ if (Ti.version < 1.8 ) {
 			}
 		}
 		new Window().open();
-	}); 
+	}
+	
+	
+	function openLoginWindow() {
+		if (isTablet) {
+			Window = require('ui/tablet/LoginWindow');
+		}
+		else {
+			// Android uses platform-specific properties to create windows.
+			// All other platforms follow a similar UI pattern.
+			if (osname === 'android') {
+				Window = require('ui/handheld/android/LoginWindow');
+			}
+			else {
+				Window = require('ui/handheld/LoginWindow');
+			}
+		}
+		
+		new Window().open();
+	}
 	
 })();
