@@ -46,7 +46,7 @@ if (Ti.version < 1.8 ) {
 	    	// User is not logged in
 	    	
 	    	// Show login window
-	        self.openLoginWindow();
+	        openLoginWindow();
 	    }
 	});
 	
@@ -54,21 +54,21 @@ if (Ti.version < 1.8 ) {
 	Ti.App.addEventListener('showLogin', function(event)  
 	{  
 		Window().close();
-		self.openLoginWindow();
-	});  
+		openLoginWindow();
+	}); 
 
 	
 	Ti.App.addEventListener('showApp', function(event)  
 	{  
 		Window().close();
-		self.openAppWindow();
+		openAppWindow();
 	}); 
 	
 	
 	Ti.App.addEventListener('showRegister', function(event)  
 	{  
 		Window().close();
-		self.openRegisterWindow();
+		openRegisterWindow();
 	}); 
 	
 	
@@ -89,7 +89,7 @@ if (Ti.version < 1.8 ) {
 		// }
 		
 		// Create a tab group to hold our windows.
-		var tab_group = require('ui/handheld/common/ApplicationTabGroup');
+		var tab_group = require('ui/common/ApplicationTabGroup');
 		new tab_group().open();
 	}
 	
