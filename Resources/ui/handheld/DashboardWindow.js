@@ -1,20 +1,20 @@
 //Application Window Component Constructor
-function ApplicationWindow() {
+function DashboardWindow() {
 	//load component dependencies
-	var FirstView = require('ui/common/FirstView');
+	var DashboardView = require('ui/common/DashboardView');
 		
 	//create component instance
 	var self = Ti.UI.createWindow({
 		backgroundColor:'#ffffff',
-		title: 'What I want to read'
+		title: 'Dashboard'
 	});
 		
 	//construct UI
-	var firstView = new FirstView();
-	self.add(firstView);
+	var dashboardView = new DashboardView();
+	self.add(dashboardView);
 	
 	return self;
 }
 
 //make constructor function the public component interface
-module.exports = ApplicationWindow;
+module.exports = DashboardWindow;

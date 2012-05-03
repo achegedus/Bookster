@@ -1,20 +1,20 @@
 //Application Window Component Constructor
-function ApplicationWindow() {
+function CompletedWindow() {
 	//load component dependencies
-	var FirstView = require('ui/common/FirstView');
+	var CompletedView = require('ui/common/CompletedView');
 		
 	//create component instance
 	var self = Ti.UI.createWindow({
 		backgroundColor:'#ffffff',
-		title: 'What I want to read'
+		title: 'Books I read'
 	});
 		
 	//construct UI
-	var firstView = new FirstView();
-	self.add(firstView);
+	var completedView = new CompletedView();
+	self.add(completedView);
 	
 	return self;
 }
 
 //make constructor function the public component interface
-module.exports = ApplicationWindow;
+module.exports = CompletedWindow;
