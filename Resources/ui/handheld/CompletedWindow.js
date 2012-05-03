@@ -1,7 +1,7 @@
 //Application Window Component Constructor
 function CompletedWindow() {
 	//load component dependencies
-	var CompletedView = require('ui/common/CompletedView');
+	var BookListView = require('ui/common/BookListView');
 		
 	//create component instance
 	var self = Ti.UI.createWindow({
@@ -10,7 +10,7 @@ function CompletedWindow() {
 	});
 		
 	//construct UI
-	var completedView = new CompletedView();
+	var completedView = new BookListView('Completed');
 	self.add(completedView);
 	
 	return self;

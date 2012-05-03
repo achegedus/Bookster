@@ -12,7 +12,7 @@ function ApplicationTabGroup() {
 	
 
 	//create app tabs
-	var win2 = require('ui/handheld/ApplicationWindow');
+	var win2 = require('ui/handheld/WishlistWindow');
 	
 	var tab2 = Ti.UI.createTab({
 		title: 'Wishlist',

@@ -1,5 +1,5 @@
 //FirstView Component Constructor
-function CompletedView() {
+function BookListView(inStatus) {
 	//create object instance, a parasitic subclass of Observable
 	var self = Ti.UI.createView();
 	var Cloud = require('ti.cloud');
@@ -12,7 +12,7 @@ function CompletedView() {
 	    per_page: 10,
 	    where: {
         	user_id: Ti.App.Properties.getString('userID'),
-        	status: 'Completed'
+        	status: inStatus
 		}
 	}, function (e) {
 	    if (e.success) {
@@ -30,4 +30,4 @@ function CompletedView() {
 	
 	return self;
 }
-module.exports = CompletedView;
+module.exports = BookListView;
