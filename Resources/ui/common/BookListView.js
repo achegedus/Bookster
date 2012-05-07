@@ -4,7 +4,8 @@ function BookListView(inStatus) {
 	var self = Ti.UI.createView();
 	var Cloud = require('ti.cloud');
 	Cloud.debug = true;
-	
+	var tableview;
+	var detailWin;
 	
 	Cloud.Objects.query({
 	    classname: 'books',
@@ -17,24 +18,16 @@ function BookListView(inStatus) {
 	}, function (e) {
 	    if (e.success) {
 
-			var tableview = Titanium.UI.createTableView({
+			tableview = Titanium.UI.createTableView({
 				data:e.books
 			});
-			alert('hi');
 			
-			// create table view event listener
-			tableview.addEventListener('click', function(event)
-			{
-				alert(event.rowData.title);
-				if (event.rowData.title)
-				{
-					var win = Titanium.UI.createWindow({
-						//url:e.rowData.test,
-						title:event.rowData.title
-					});
-					
-					Ti.UI.currentTab.open(win,{animated:true});
-				}
+			//add behavior
+			tableview.addEventListener('click', function(e) {
+				self.fireEvent('itemSelected', {
+					title:e.rowData.title,
+					author:e.rowData.author
+				});
 			});
 
 	        self.add(tableview);

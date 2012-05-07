@@ -2,6 +2,7 @@
 function DashboardView() {
 	//create object instance, a parasitic subclass of Observable
 	var self = Ti.UI.createView();
+	
 	var Cloud = require('ti.cloud');
 	Cloud.debug = true;
 	

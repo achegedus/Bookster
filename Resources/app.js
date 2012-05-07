@@ -40,7 +40,6 @@ if (Ti.version < 1.8 ) {
 	    	Ti.App.Properties.setString('userID',e.users[0]['id']);
 	    	
 	    	// Show app window
-	    	
 	    	openAppWindow();
 	    } else {
 	    	// User is not logged in
@@ -74,23 +73,24 @@ if (Ti.version < 1.8 ) {
 	
 	var openAppWindow = function() {
 		
-		// if (isTablet) {
-			// Window = require('ui/tablet/ApplicationWindow');
-		// }
-		// else {
-			// // Android uses platform-specific properties to create windows.
-			// // All other platforms follow a similar UI pattern.
-			// if (osname === 'android') {
-				// Window = require('ui/handheld/android/ApplicationWindow');
-			// }
-			// else {
-				// Window = require('ui/handheld/ApplicationWindow');
-			// }
-		// }
+		if (isTablet) {
+			Window = require('ui/tablet/ApplicationWindow');
+		}
+		else {
+			// Android uses platform-specific properties to create windows.
+			// All other platforms follow a similar UI pattern.
+			if (osname === 'android') {
+				Window = require('ui/handheld/android/ApplicationWindow');
+			}
+			else {
+				Window = require('ui/handheld/ApplicationWindow');
+			}
+		}
 		
+		new Window().open();
 		// Create a tab group to hold our windows.
-		var tab_group = require('ui/common/ApplicationTabGroup');
-		new tab_group().open();
+		// var tab_group = require('ui/common/ApplicationTabGroup');
+		// new tab_group().open();
 	}
 	
 	
