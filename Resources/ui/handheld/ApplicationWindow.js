@@ -2,6 +2,8 @@
 function ApplicationWindow() {
 
 	Titanium.UI.setBackgroundColor('#000');
+
+	var BookDetailWindow = require('ui/handheld/BookDetailWindow');
 			
 	//create tab group
 	var tabGroup = Ti.UI.createTabGroup();
@@ -25,19 +27,13 @@ function ApplicationWindow() {
 	
 	
 	//wishlist tab
-	var WishlistView = require('ui/common/BookListView');
-	var wishlistView = new WishlistView();
-	
-	//var DetailView = require('ui/common/BookListView');
-	
+	var BookListView = require('ui/common/BookListView');
+	var wishlistView = new BookListView('Wishlist');
+		
 	var wishlistContainerWindow = Ti.UI.createWindow({
 		title:'Wishlist'
 	});
 	wishlistContainerWindow.add(wishlistView);
-	
-	var wishlistDetailWindow = Ti.UI.createWindow({
-		title: 'Detail'
-	});
 	
 	var tab2 = Ti.UI.createTab({
 		title: 'Wishlist',
@@ -46,19 +42,20 @@ function ApplicationWindow() {
 	});
 	
 	wishlistContainerWindow.addEventListener('itemSelected', function(e) {
+		var wishlistDetailWindow = new BookDetailWindow(e);
 		tab2.open(wishlistDetailWindow);
 	});
 	
 	
 	
 	//completed tab
-	var CompletedView = require('ui/common/BookListView');
-	//var completedView = new CompletedView();
+	var BookListView = require('ui/common/BookListView');
+	var completedView = new BookListView('Completed');
 	
 	var completedContainerWindow = Ti.UI.createWindow({
 		title:'Completed'
 	});
-	//completedContainerWindow.add(completedView);
+	completedContainerWindow.add(completedView);
 	
 	var tab3 = Ti.UI.createTab({
 		title: 'Completed',
@@ -66,6 +63,10 @@ function ApplicationWindow() {
 		icon: 'images/58-bookmark.png'
 	});
 	
+	completedContainerWindow.addEventListener('itemSelected', function(e) {
+		var completedDetailWindow = new BookDetailWindow(e);
+		tab3.open(completedDetailWindow);
+	});
 	
 	
 	//settings tab
